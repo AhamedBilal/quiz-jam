@@ -1,1 +1,1 @@
-# quiz-jam
+# Quiz JAM
