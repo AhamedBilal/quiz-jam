@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {OverlayModule} from "@angular/cdk/overlay";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -11,9 +13,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LayoutComponent,
     DashboardComponent
   ],
-  imports: [
-    CommonModule,
-    LayoutRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        LayoutRoutingModule,
+        OverlayModule,
+        MatDividerModule
+    ]
 })
 export class LayoutModule { }
