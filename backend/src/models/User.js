@@ -38,7 +38,9 @@ module.exports = (sequelize) => {
         },
         profilePic: {
             type: DataTypes.STRING,
-
+        },
+        firebaseToken: {
+            type: DataTypes.STRING,
         }
     }, {
         sequelize,

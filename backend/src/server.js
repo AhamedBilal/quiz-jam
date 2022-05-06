@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
 const path = require("path");
-const db = require('./src/models');
+const db = require('./models');
 const port = process.env.PORT || 3000;
 
 
@@ -27,7 +27,8 @@ app.get('/', (req, res) => {
     res.json({'message': 'ok'});
 })
 // Add routes
-app.use('/api/v1/users', require('./src/routes/user.route'));
+app.use('/api/v1/users', require('./routes/user.route'));
+app.use('/api/v1/file', require('./routes/file.route'));
 
 app.listen(port, 'localhost', () => {
     console.log(`Quiz jam server listening at http://localhost:${port}`)
