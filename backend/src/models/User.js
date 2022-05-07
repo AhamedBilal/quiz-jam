@@ -4,7 +4,18 @@ module.exports = (sequelize) => {
     class User extends Model {
 
         static associate(models) {
-            // define association here
+            User.belongsToMany(User, {
+                foreignKey: 'userFirstId',
+                otherKey: 'userSecondId',
+                as: 'friends',
+                through: 'UserRelationship'
+            });
+            User.belongsToMany(models.Topic, {through: 'UserTopic', as: 'topics'});
+            User.hasMany(models.Topic);
+            User.hasMany(models.Post);
+            User.hasMany(models.Comment);
+            User.hasMany(models.GameRecord);
+            User.belongsToMany(models.Post, {through: 'Like'});
         }
     }
 
@@ -38,6 +49,14 @@ module.exports = (sequelize) => {
         },
         profilePic: {
             type: DataTypes.STRING,
+        },
+        verified: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        online: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         },
         firebaseToken: {
             type: DataTypes.STRING,

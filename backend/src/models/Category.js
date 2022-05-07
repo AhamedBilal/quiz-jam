@@ -1,28 +1,26 @@
 'use strict';
 const {Model, DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
-    class Comment extends Model {
+    class Category extends Model {
 
         static associate(models) {
-            Comment.belongsTo(models.Post);
-            Comment.belongsTo(models.User);
-            Comment.hasMany(models.Comment, {as: 'comments', foreignKey: 'parentCommentId'});
+            Category.hasMany(models.Topic, {as: 'topics'});
         }
     }
 
-    Comment.init({
+    Category.init({
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        comment: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         }
     }, {
         sequelize,
-        modelName: 'Comment',
+        modelName: 'Category',
     });
-    return Comment;
+    return Category;
 };

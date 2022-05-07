@@ -28,7 +28,17 @@ app.get('/', (req, res) => {
 })
 // Add routes
 app.use('/api/v1/users', require('./routes/user.route'));
+app.use('/api/v1/categories', require('./routes/category.route'));
 app.use('/api/v1/file', require('./routes/file.route'));
+
+/* Error handler middleware */
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    console.error(err.message, err.stack);
+    res.status(statusCode).json({'message': err.message});
+
+    return;
+});
 
 app.listen(port, 'localhost', () => {
     console.log(`Quiz jam server listening at http://localhost:${port}`)
