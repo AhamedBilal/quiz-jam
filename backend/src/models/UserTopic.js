@@ -2,6 +2,11 @@
 const {Model, DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
     class UserTopic extends Model {
+
+        static associate(models) {
+            UserTopic.belongsTo(models.User);
+            UserTopic.belongsTo(models.Topic)
+        }
     }
 
     UserTopic.init({
