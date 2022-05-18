@@ -1,4 +1,4 @@
-<nav class="fixed w-full bg-white border border-gray-200 px-2 sm:px-4 px-2 sm:px-4">
+<nav class="z-10 top-0 fixed w-full bg-white border border-gray-200 px-2 sm:px-4 px-2 sm:px-4">
   <div class="container h-[48px] flex flex-wrap justify-between items-center mx-auto">
     <div class="flex items-center gap-4">
       <a href="" class="flex items-center">
@@ -8,19 +8,6 @@
         </div>
         <span class="hidden md:block self-center text-xl font-semibold whitespace-nowrap">Quiz jam</span>
       </a>
-      <div class="relative mr-3 md:mr-0 md:block grow max-w-md w-full">
-        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-          <svg class="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"
-               xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"></path>
-          </svg>
-        </div>
-        <input type="text"
-               class="hidden md:block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-indigo-500 focus:border-indigo-500"
-               placeholder="Search...">
-      </div>
     </div>
     <div class="hidden md:flex items-center gap-2.5 md:order-2">
 
@@ -34,26 +21,42 @@
           </li>
 
           <li>
-            <a href="#" class="flex items-center gap-2 py-2 pr-4 pl-3 text-gray-700 md:border-0 md:hover:text-indigo-700 md:p-0">
+            <a routerLink="topics" routerLinkActive="text-indigo-700"
+               class="flex items-center gap-2 py-2 pr-4 pl-3 text-gray-700 md:border-0 md:hover:text-indigo-700 md:p-0">
+              <span class="material-icons text-2xl">explore</span>
+              Explore
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="friends" routerLinkActive="text-indigo-700"
+               class="flex items-center gap-2 py-2 pr-4 pl-3 text-gray-700 md:border-0 md:hover:text-indigo-700 md:p-0">
               <span class="material-icons text-2xl">people</span>
               Friends
             </a>
           </li>
 
           <li>
-            <a href="#" class="flex items-center gap-2 py-2 pr-4 pl-3 text-gray-700 md:border-0 md:hover:text-indigo-700 md:p-0">
-              <span class="material-icons text-2xl">apps</span>
-              Topics
-            </a>
+            <a routerLink="feeds" routerLinkActive="text-indigo-700"
+               class="flex items-center gap-2 py-2 pr-4 pl-3 text-gray-700 md:border-0 md:hover:text-indigo-700 rounded md:p-0"
+               aria-current="page">
+              <span class="material-icons text-2xl">feed</span> Feeds</a>
           </li>
         </ul>
       </div>
 
       <div class="flex items-center border-l border-slate-200 ml-3 pl-3 gap-1">
-        <button class="flex items-center justify-center w-10 h-10 rounded-full transition hover:bg-gray-200 hover:text-indigo-700">
+        <button class="transition bg-indigo-700 text-white px-6 py-1.5 rounded-full text-sm hover:bg-indigo-900">
+          Create
+        </button>
+
+
+        <button
+          class="flex items-center justify-center w-10 h-10 rounded-full transition hover:bg-gray-200 hover:text-indigo-700">
           <span class="material-icons text-xl ">chat</span>
         </button>
-        <button class="flex items-center justify-center w-10 h-10 rounded-full transition hover:bg-gray-200 hover:text-indigo-700">
+        <button
+          class="flex items-center justify-center w-10 h-10 rounded-full transition hover:bg-gray-200 hover:text-indigo-700">
           <span class="material-icons text-xl">notifications</span>
         </button>
         <button type="button"
@@ -69,10 +72,9 @@
     </div>
   </div>
 </nav>
-<div class="w-full h-full bg-gray-100 relative">
-<!--  <router-outlet></router-outlet>-->
+<div class="w-full h-full bg-gray-100 relative mt-[48px]">
+  <router-outlet></router-outlet>
 </div>
-
 
 
 <!--profile menu-->

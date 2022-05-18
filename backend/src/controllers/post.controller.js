@@ -24,7 +24,7 @@ exports.findByPk = async (req, res, next) => {
         const data = await Post.findByPk(id);
         if (!data) {
             res.status(404).json({
-                message: 'Topic not found'
+                message: 'Not found'
             });
         }
         res.status(200).json(data);
@@ -47,7 +47,7 @@ exports.update = async (req, res, next) => {
         const data = await Post.update(req.body, {where: {id}});
         if (!data[0]) {
             res.status(404).json({
-                message: 'Topic not found'
+                message: 'Not found'
             });
             return;
         }
@@ -65,7 +65,7 @@ exports.delete = async (req, res, next) => {
         });
         if (!data) {
             res.status(404).json({
-                message: 'Topic not found'
+                message: 'Not found'
             });
             return;
         }

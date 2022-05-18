@@ -1,5 +1,7 @@
 const db = require("../models");
+const sequelize = require("sequelize");
 const {DataTypes} = require("sequelize/types");
+const Topic = db.Topic;
 const Topic = db.Topic;
 const Op = db.Sequelize.Op;
 
@@ -34,10 +36,13 @@ exports.findByPk = async (req, res, next) => {
 };
 
 exports.create = async (req, res, next) => {
+    const t = await sequelize.transaction();
     try {
         const data = await Topic.create({...req.body});
+        await t.commit();
         res.status(200).json(data);
     } catch (e) {
+        await t.rollback();
         next(e)
     }
 };
@@ -58,11 +63,7 @@ exports.update = async (req, res, next) => {
 };
 exports.delete = async (req, res, next) => {
     try {
-        const data = await Topic.destroy({
-            where: {
-                id: req.params.id
-            }
-        });
+        const data = await Topic.destroy({where: {id: req.params.id}});
         if (!data) {
             res.status(404).json({
                 message: 'Topic not found'
