@@ -20,12 +20,12 @@
   [multiple],
   textarea,
   select {
-    @apply w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+    @apply transition w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
   }
 
   [type="checkbox"],
   [type="radio"] {
-    @apply border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
+    @apply transition border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
   }
 }
 

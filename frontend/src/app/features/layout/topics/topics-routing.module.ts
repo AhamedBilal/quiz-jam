@@ -7,7 +7,8 @@ import {PostPageComponent} from "./post-page/post-page.component";
 const routes: Routes = [
   {path: '', component: TopicsComponent},
   {path: ':topicId', component: TopicPageComponent},
-  {path: ':topicId//', component: PostPageComponent},
+  {path: ':topicId/post/:postId', component: PostPageComponent},
+  {path: ':topicId/game', component: PostPageComponent},
 ];
 
 @NgModule({
