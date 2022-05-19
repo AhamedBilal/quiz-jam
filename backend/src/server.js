@@ -27,8 +27,14 @@ app.get('/', (req, res) => {
     res.json({'message': 'ok'});
 })
 // Add routes
+app.use('/api/v1/auth', require('./routes/auth.route'));
 app.use('/api/v1/users', require('./routes/user.route'));
+app.use('/api/v1/friends', require('./routes/friend.route'));
 app.use('/api/v1/categories', require('./routes/category.route'));
+app.use('/api/v1/topics', require('./routes/topic.route'));
+app.use('/api/v1/posts', require('./routes/post.route'));
+app.use('/api/v1/comment', require('./routes/comment.route'));
+app.use('/api/v1/question', require('./routes/question.route'));
 app.use('/api/v1/file', require('./routes/file.route'));
 
 /* Error handler middleware */

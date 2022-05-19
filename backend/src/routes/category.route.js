@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/category.controller');
+const categoryController = require('../controllers/category.controller');
 
-router.post('/', userController.create);
+router.post('/', categoryController.create);
 
-router.put('/', userController.update);
+router.put('/', categoryController.update);
 
-router.get('/', userController.findAll);
+router.get('/', categoryController.findAll);
 
-router.get('/:id', userController.findByPk);
+router.get('/:id', categoryController.findByPk);
 
-router.delete('/:id', userController.delete);
+router.delete('/:id', categoryController.delete);
 
 module.exports = router;

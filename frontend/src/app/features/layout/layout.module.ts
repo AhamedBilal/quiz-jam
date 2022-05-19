@@ -7,6 +7,10 @@ import {OverlayModule} from "@angular/cdk/overlay";
 import {MatDividerModule} from "@angular/material/divider";
 import {TopicDialogComponent} from './components/topic-dialog/topic-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import {MatDialogModule} from "@angular/material/dialog";
     LayoutRoutingModule,
     OverlayModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class LayoutModule {
