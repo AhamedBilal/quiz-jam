@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SpinnerInterceptor } from './spinner.interceptor';
+import { ErrorInterceptor } from './error.interceptor';
 
-describe('SpinnerInterceptor', () => {
+describe('ErrorInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      SpinnerInterceptor
+      ErrorInterceptor
       ]
   }));
 
   it('should be created', () => {
-    const interceptor: SpinnerInterceptor = TestBed.inject(SpinnerInterceptor);
+    const interceptor: ErrorInterceptor = TestBed.inject(ErrorInterceptor);
     expect(interceptor).toBeTruthy();
   });
 });

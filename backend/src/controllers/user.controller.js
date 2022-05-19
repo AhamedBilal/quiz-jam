@@ -25,8 +25,7 @@ exports.register = async (req, res, next) => {
         const encryptedPassword = await bcrypt.hash(password + config.SECRET, config.SALT_ROUNDS);
 
         const user = await User.create({
-            name,
-            email,
+            ...req.body,
             password: encryptedPassword,
         });
 
@@ -58,7 +57,7 @@ exports.login = async (req, res, next) => {
 
         if (user && (await bcrypt.compare(password + config.SECRET, user.password))) {
             const token = jwt.sign(
-                {userID: user.id, email},
+                {id: user.id, email},
                 config.SECRET,
                 {
                     expiresIn: "30d",
@@ -101,6 +100,24 @@ exports.findByPk = async (req, res, next) => {
         });
         if (!user) {
             res.status(404).send('User not found');
+        }
+        res.status(200).json(user);
+    } catch (err) {
+        next(err);
+    }
+};
+exports.findByToken = async (req, res, next) => {
+    try {
+        if (!req?.user?.id) {
+            res.status(403).send('Invalid Token');
+            return;
+        }
+
+        const user = await User.findByPk(req.user.id, {
+            attributes: {exclude: ['password']}
+        });
+        if (!user) {
+            res.status(403).send('User not found');
         }
         res.status(200).json(user);
     } catch (err) {

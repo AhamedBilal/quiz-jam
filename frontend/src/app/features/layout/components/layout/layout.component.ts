@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../../../../core/services/auth.service";
+import {DataService} from "../../../../core/services/data.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-layout',
@@ -8,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutComponent implements OnInit {
   isProfileMenuOpen = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private authService: AuthService,
+    private dataService: DataService,
+    private spinner: NgxSpinnerService,
+  ) {
   }
 
+  ngOnInit(): void {
+
+    this.authService.getUserDetails().subscribe(value => {
+      console.log(value);
+    })
+
+  }
+
+  logout() {
+
+  }
 }

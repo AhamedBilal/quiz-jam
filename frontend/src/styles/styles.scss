@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~ngx-toastr/toastr';
+@import '~ngx-spinner/animations/square-loader.css';
+
 
 @layer base {
   [type="text"],
@@ -28,6 +31,13 @@
     @apply transition border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
   }
 }
+
+input:not([type=checkbox]):not([type=radio]).ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  @apply transition border-red-500 focus:border-red-500 focus:ring-red-500;
+}
+
 
 .material-icons {
   font-family: 'Material Icons';

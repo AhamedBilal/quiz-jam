@@ -46,11 +46,6 @@
       </div>
 
       <div class="flex items-center border-l border-slate-200 ml-3 pl-3 gap-1">
-        <button class="transition bg-indigo-700 text-white px-6 py-1.5 rounded-full text-sm hover:bg-indigo-900">
-          Create
-        </button>
-
-
         <button
           class="flex items-center justify-center w-10 h-10 rounded-full transition hover:bg-gray-200 hover:text-indigo-700">
           <span class="material-icons text-xl ">chat</span>
@@ -93,18 +88,14 @@
     <ul class="py-1" aria-labelledby="dropdown">
       <li>
         <a href="#"
-           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 ">Dashboard</a>
+           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 ">Account</a>
       </li>
       <li>
         <a href="#"
-           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Create Topic</a>
       </li>
       <li>
-        <a href="#"
-           class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Earnings</a>
-      </li>
-      <li>
-        <a href="#"
+        <a (click)="logout()"
            class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
       </li>
     </ul>

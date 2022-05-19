@@ -5,6 +5,7 @@ module.exports = {
         database: "quiz_jam",
         host: "localhost",
         dialect: "mysql",
+        logging: true,
         pool: {
             max: 5,
             min: 0,
