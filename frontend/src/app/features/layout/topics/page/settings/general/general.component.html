@@ -1,0 +1,48 @@
+<div>
+  <form class="p-6" [formGroup]="formGroup">
+    <h1 class="font-bold text-gray-500 text-xl">General settings</h1>
+    <hr class="mt-2 mb-4">
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Cover Image</mat-label>
+      <input readonly matInput placeholder="Filename" formControlName="img"
+             (click)="fileInput.value = ''; fileInput.click()">
+      <button *ngIf="!img?.value" matSuffix mat-icon-button aria-label="Clear" (click)="fileInput.value = ''; fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <button *ngIf="img?.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>About</mat-label>
+      <textarea matInput formControlName="about"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Guidelines</mat-label>
+      <textarea matInput formControlName="guidelines"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let data of categories" [value]="data">
+          {{data}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <button mat-raised-button class="bg-indigo-700 text-white">Save Changes</button>
+    </div>
+
+  </form>
+</div>

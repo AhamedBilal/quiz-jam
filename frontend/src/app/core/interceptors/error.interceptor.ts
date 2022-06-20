@@ -35,7 +35,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         } else {
           errorMsg = error?.name;
         }
-        this.toastr.error(errorMsg.toUpperCase());
+        // this.toastr.error(errorMsg.toUpperCase());
         this.spinner.hide();
         return throwError(errorMsg);
       })

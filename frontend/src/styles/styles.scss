@@ -7,31 +7,6 @@
 @import '~ngx-spinner/animations/square-loader.css';
 
 
-@layer base {
-  [type="text"],
-  [type="email"],
-  [type="url"],
-  [type="password"],
-  [type="number"],
-  [type="date"],
-  [type="datetime-local"],
-  [type="month"],
-  [type="search"],
-  [type="tel"],
-  [type="time"],
-  [type="week"],
-  [multiple],
-  textarea,
-  select {
-    @apply transition w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
-  }
-
-  [type="checkbox"],
-  [type="radio"] {
-    @apply transition border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
-  }
-}
-
 input:not([type=checkbox]):not([type=radio]).ng-invalid.ng-touched,
 select.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {

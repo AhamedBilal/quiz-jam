@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
     UserTopic.init({
         role: {
             type: DataTypes.STRING,
-            defaultValue: 'user',
+            defaultValue: 'member',
         },
         winRate: {
             type: DataTypes.DECIMAL,

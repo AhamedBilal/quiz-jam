@@ -14,6 +14,8 @@ import {Router} from "@angular/router";
 export class LayoutComponent implements OnInit {
   isProfileMenuOpen = false;
 
+  userObj: any;
+
   constructor(
     private authService: AuthService,
     private dataService: DataService,
@@ -24,11 +26,9 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.createTopic();
-
     this.authService.getUserDetails().subscribe(value => {
-      console.log(value);
+      this.userObj = value;
+      this.dataService.changeUserData(value);
     })
 
   }
@@ -41,6 +41,7 @@ export class LayoutComponent implements OnInit {
   createTopic() {
     const dialogRef = this.dialog.open(TopicDialogComponent, {
       width: '350px',
+      data: this.userObj?.id,
     });
 
     dialogRef.afterClosed().subscribe(result => {

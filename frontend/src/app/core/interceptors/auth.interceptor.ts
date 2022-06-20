@@ -20,10 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.token = this.auth.getToken();
-
-
     request = this.addAuthenticationToken(request);
-
     return next.handle(request).pipe(catchError((error: HttpErrorResponse) => {
         if (error && error.status === 401) {
           localStorage.clear();
@@ -31,16 +28,12 @@ export class AuthInterceptor implements HttpInterceptor {
         return throwError(error);
       })
     );
-
   }
 
   private addAuthenticationToken(request: HttpRequest<any>): HttpRequest<any> {
-    // If we do not have a token yet then we should not set the header.
-    // Here we could first retrieve the token from where we store it.
     if (!this.token) {
       return request;
     }
-    // If you are calling an outside domain then do not add the token.
     if (!request.url.match(environment.baseURI)) {
       return request;
     }

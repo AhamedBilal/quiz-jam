@@ -1,5 +1,4 @@
 const db = require("../models");
-const {DataTypes} = require("sequelize/types");
 const Question = db.Question;
 const Op = db.Sequelize.Op;
 

@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Create Topic</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="formGroup">
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Question</mat-label>
+      <textarea matInput formControlName="question" ></textarea>
+    </mat-form-field><input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Image</mat-label>
+      <input readonly matInput placeholder="Filename" formControlName="img"
+             (click)="fileInput.value = ''; fileInput.click()">
+      <button *ngIf="!img?.value" matSuffix mat-icon-button aria-label="Clear" (click)="fileInput.value = ''; fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <button *ngIf="img?.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Answer 1</mat-label>
+      <input matInput formControlName="ans1" >
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Answer 2</mat-label>
+      <input matInput formControlName="ans2" >
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Answer 3</mat-label>
+      <input matInput formControlName="ans3" >
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Answer 4</mat-label>
+      <input matInput formControlName="ans4" >
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button (click)="create()" color="primary">Create</button>
+</mat-dialog-actions>
