@@ -1,0 +1,30 @@
+<mat-toolbar class="bg-gray-300">
+  <button mat-icon-button routerLink="../">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container mx-auto overflow-hidden">
+
+  <div class="border border-gray-300 bg-white grid grid-cols-4 gap-4">
+    <div class="border-r border-gray-300">
+      <mat-nav-list>
+        <mat-list-item routerLink="general" routerLinkActive="active">
+          <mat-icon mat-list-icon>public</mat-icon>
+          <h4 mat-line>General</h4>
+        </mat-list-item>
+        <mat-list-item routerLink="members" routerLinkActive="active">
+          <mat-icon mat-list-icon>group</mat-icon>
+          <h4 mat-line>Members</h4>
+        </mat-list-item>
+        <mat-list-item routerLink="questions" routerLinkActive="active">
+          <mat-icon mat-list-icon>help</mat-icon>
+          <h4 mat-line>Questions</h4>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+    <div class="col-span-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

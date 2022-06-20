@@ -1,0 +1,38 @@
+<div class="bg-indigo-400  pt-[80px]">
+  <div class="bg-white">
+    <div class="max-w-5xl container mx-auto px-4 bg-white relative">
+      <div class="flex gap-4">
+        <div class="w-[100px] h-[100px] bg-cover shrink-0 -mt-10 rounded-full border-8 border-white shadow"
+             style="background-image: url(/assets/topic-profile.jpg)"></div>
+        <div class="w-100 pt-4">
+          <h1 class="font-extrabold text-3xl text-gray-800 capitalize mb-2">Basic Maths</h1>
+          <div class="text-xs text-gray-400 mb-4 ">Players 10, 000</div>
+          <div class="flex gap-2 mb-3">
+            <button mat-flat-button class="bg-red-600 text-white">
+              <mat-icon>play_arrow</mat-icon>
+              Play
+            </button>
+            <button mat-flat-button class="bg-indigo-700 text-white">
+              <mat-icon>add</mat-icon>
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <nav mat-tab-nav-bar>
+          <a mat-tab-link
+             *ngFor="let link of navLinks"
+             [routerLink]="link.path"
+             routerLinkActive #rla="routerLinkActive" [routerLinkActiveOptions]="{exact: true}"
+             [active]="rla.isActive">
+            {{link.label}}
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
