@@ -9,6 +9,7 @@ const routes: Routes = [
       // {path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
       {path: 'topics', loadChildren: () => import('./topics/topics.module').then(m => m.TopicsModule)},
       {path: 'friends', loadChildren: () => import('./friends/friends.module').then(m => m.FriendsModule)},
+      {path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)},
     ]
   }
 ];

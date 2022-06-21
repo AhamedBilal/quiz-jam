@@ -10,6 +10,7 @@ import {MembersComponent} from "./page/members/members.component";
 import {SettingsComponent} from "./page/settings/settings.component";
 import {GeneralComponent} from "./page/settings/general/general.component";
 import {QuestionsComponent} from "./page/settings/questions/questions.component";
+import {GameComponent} from "./game/game.component";
 
 const routes: Routes = [
   {path: '', component: TopicsComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
     ]
   },
   {path: ':topicId/post/:postId', component: PostPageComponent},
-  {path: ':topicId/game', component: PostPageComponent},
+  {path: ':topicId/game', component: GameComponent},
 ];
 
 @NgModule({

@@ -28,6 +28,8 @@ import {MatTableModule} from "@angular/material/table";
 import { QuestionDialogComponent } from './page/settings/questions/question-dialog/question-dialog.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatDialogModule} from "@angular/material/dialog";
+import { GameComponent } from './game/game.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     CreatePostComponent,
     GeneralComponent,
     QuestionsComponent,
-    QuestionDialogComponent
+    QuestionDialogComponent,
+    GameComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +65,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ]
 })
 export class TopicsModule { }
