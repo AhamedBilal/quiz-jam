@@ -30,7 +30,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatDialogModule} from "@angular/material/dialog";
 import { GameComponent } from './game/game.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-
+import { AdminsComponent } from './page/settings/admins/admins.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     GeneralComponent,
     QuestionsComponent,
     QuestionDialogComponent,
-    GameComponent
+    GameComponent,
+    AdminsComponent
   ],
   imports: [
     CommonModule,

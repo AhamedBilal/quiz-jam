@@ -51,7 +51,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <div *ngIf="!dataSource.length" class="p-24 text-center text-gray-500 bg-gray-100">NO DATA FOUND</div>
-    <mat-paginator [length]="100"
+    <mat-paginator [length]="dataSource.length"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]"
                    aria-label="Select page">

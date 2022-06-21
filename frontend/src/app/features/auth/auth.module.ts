@@ -13,6 +13,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatButtonModule,
     MatIconModule,
     MatDatepickerModule,
-    MatInputModule
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule
   ]
 })
 export class AuthModule { }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NgxSpinnerService} from "ngx-spinner";
+import {waitFor} from "../../../../../config/shared";
 
 @Component({
   selector: 'app-about',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  about: any
+  questions = 0;
+  players = 0;
 
-  constructor() { }
+  constructor(private spinner: NgxSpinnerService) {
 
-  ngOnInit(): void {
+  }
+
+  async ngOnInit() {
+    this.spinner.show();
+    await waitFor(1000);
+    this.spinner.hide();
+    this.questions = 11;
+    this.players = 28;
+    this.about = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid cupiditate facilis hic illo libero modi mollitia perferendis placeat, porro quibusdam quis quod rem, temporibus, veritatis voluptas voluptatibus voluptatum? Expedita, ipsum.';
   }
 
 }

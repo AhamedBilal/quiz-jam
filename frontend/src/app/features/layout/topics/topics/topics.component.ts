@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {TopicService} from "../../../../core/services/topic.service";
 import {CategoryService} from "../../../../core/services/category.service";
+import {NgxSpinnerService} from "ngx-spinner";
+import {waitFor} from "../../../../config/shared";
+import {DataService} from "../../../../core/services/data.service";
 
 @Component({
   selector: 'app-topics',
@@ -9,7 +12,9 @@ import {CategoryService} from "../../../../core/services/category.service";
 })
 export class TopicsComponent implements OnInit {
 
-  categoryTopics: any[] = [
+  categoryTopics: any[] = [];
+
+  tempCategoryTopics: any[] = [
     {
       name: 'Mathematics',
       topics: [
@@ -77,19 +82,31 @@ export class TopicsComponent implements OnInit {
 
   constructor(
     private topicService: TopicService,
+    private spinner: NgxSpinnerService,
     private categoryService: CategoryService,
+    private dataService: DataService
   ) {
   }
 
-  ngOnInit(): void {
-    this.getAllTopicWithCategories();
+  async ngOnInit() {
+    this.spinner.show();
+    await waitFor(2000);
+    this.spinner.hide();
+    this.categoryTopics = [...this.tempCategoryTopics];
+
+    // this.getAllTopicWithCategories();
+    this.dataService.currentUserData.subscribe(value => {
+      if (value) {
+        this.categoryTopics[2].topics.push({name: 'Biology', img: null});
+      }
+    });
   }
 
-  getAllTopicWithCategories() {
-    this.categoryService.getAllWithTopics().subscribe(value => {
-      console.log(value);
-      this.categoryTopics = value.rows;
-    })
-  }
+  // getAllTopicWithCategories() {
+  //   this.categoryService.getAllWithTopics().subscribe(value => {
+  //     console.log(value);
+  //     this.categoryTopics = value.rows;
+  //   })
+  // }
 
 }

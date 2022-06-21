@@ -1,1 +1,25 @@
-<p>create-post works!</p>
+<h2 mat-dialog-title>Create Post</h2>
+<mat-dialog-content class="mat-typography">
+  <form >
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Text</mat-label>
+      <textarea matInput placeholder="Whats on your mind?" rows="6"></textarea>
+    </mat-form-field>
+    <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Attachment (image/video)</mat-label>
+      <input readonly matInput placeholder="Filename"
+             (click)="fileInput.value = ''; fileInput.click()">
+      <button *ngIf="!img?.value" matSuffix mat-icon-button aria-label="Clear" (click)="fileInput.value = ''; fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <button *ngIf="img?.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button (click)="create()" color="primary">Post</button>
+</mat-dialog-actions>

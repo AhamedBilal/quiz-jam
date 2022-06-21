@@ -6,15 +6,15 @@
              style="background-image: url(/assets/topic-profile.jpg)"></div>
         <div class="w-100 pt-4">
           <h1 class="font-extrabold text-3xl text-gray-800 capitalize mb-2">Basic Maths</h1>
-          <div class="text-xs text-gray-400 mb-4 ">Players 10, 000</div>
+          <div class="text-xs text-gray-400 mb-4 ">Players {{players}}</div>
           <div class="flex gap-2 mb-3">
-            <button mat-flat-button class="bg-red-600 text-white" routerLink="game">
+            <button *ngIf="followed" mat-flat-button class="bg-red-600 text-white" routerLink="game">
               <mat-icon>play_arrow</mat-icon>
               Play
             </button>
-            <button mat-flat-button class="bg-indigo-700 text-white">
-              <mat-icon>add</mat-icon>
-              Follow
+            <button mat-flat-button class="text-white " [class.bg-indigo-700]="!followed" [class.bg-gray-500]="followed" >
+              <mat-icon>{{followed ? 'remove' : 'play_arrow'}}</mat-icon>
+              {{followed ? 'Unfollow': 'Follow'}}
             </button>
           </div>
         </div>

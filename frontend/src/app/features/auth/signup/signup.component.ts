@@ -7,6 +7,7 @@ import {AuthService} from "../../../core/services/auth.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
+import {waitFor} from "../../../config/shared";
 
 @Component({
   selector: 'app-signup',
@@ -46,20 +47,25 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
       return;
     }
 
     this.spinner.show();
-    this.service.signUp(this.formGroup.value).subscribe(value => {
-      this.spinner.hide();
-      localStorage.setItem('token', value.token);
-      this.toastr.success('ACCOUNT SUCCESSFULLY CREATED');
-      this.toastr.success('VERIFICATION EMAIL SENT TO YOUR ACCOUNT', '', {timeOut: 5000});
-      this.router.navigate(['auth/login']);
-    });
+    await waitFor(2000);
+    this.spinner.hide();
+    this.toastr.success('ACCOUNT SUCCESSFULLY CREATED');
+    this.toastr.success('VERIFICATION EMAIL SENT TO YOUR ACCOUNT', '', {timeOut: 5000});
+    this.router.navigate(['auth/login']);
+
+    // this.service.signUp(this.formGroup.value).subscribe(value => {
+    //   this.spinner.hide();
+    //   this.toastr.success('ACCOUNT SUCCESSFULLY CREATED');
+    //   this.toastr.success('VERIFICATION EMAIL SENT TO YOUR ACCOUNT', '', {timeOut: 5000});
+    //   this.router.navigate(['auth/login']);
+    // });
 
 
   }

@@ -1,1 +1,41 @@
-<p>search works!</p>
+<div class="p-4">
+  <form class="mb-3">
+    <mat-form-field class="md:w-2/3" appearance="fill">
+      <mat-label>Search</mat-label>
+
+      <input type="search" [(ngModel)]="filter.name" name="name" matInput placeholder="Name here ...">
+      <button matSuffix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+      <button matSuffix mat-icon-button (click)="openFilter()">
+        <mat-icon>filter_alt</mat-icon>
+      </button>
+    </mat-form-field>
+
+
+    <div>
+      <div
+        *ngFor="let data of friends; index as i;"
+        class="flex justify-between items-center bg-white border border-gray-300 rounded py-4 px-6">
+        <div class="flex gap-4 items-center">
+        <span class="flex ml-3 text-sm bg-gray-800 rounded-full md:mr-0">
+        <img class="w-8 h-8 rounded-full" [src]="data?.img">
+      </span>
+          <p class=" text-sm text-gray-800">{{data?.name}}</p>
+        </div>
+        <div>
+          <button type="button" mat-icon-button matTooltip="Send Request" (click)="addFriend(i)"><mat-icon>person_add</mat-icon></button>
+        </div>
+      </div>
+    </div>
+
+    <mat-paginator [length]="friends.length"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   aria-label="Select page">
+    </mat-paginator>
+
+  </form>
+
+
+</div>

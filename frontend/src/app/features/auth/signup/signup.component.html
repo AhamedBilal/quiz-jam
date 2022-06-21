@@ -2,46 +2,40 @@
   <div>
     <h1 class="text-3xl font-bold mb-8">Sign Up</h1>
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" autocomplete="off">
-      <div class="mb-4">
-        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-        <input type="text" formControlName="name" name="name" id="name">
-      </div>
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-        <input type="text" formControlName="email" name="email" id="email">
-      </div>
-      <div class="mb-4">
-        <label for="dob" class="block text-sm font-medium text-gray-700 mb-2">Date of birth</label>
-        <input matInput [matDatepicker]="picker" type="text" (focus)="picker.open()" name="dob" id="dob" formControlName="dob">
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="multi-year" [startAt]="startDate"></mat-datepicker>
-      </div>
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700 mb-2">Gender</label>
-        <div class="flex gap-2">
-          <div *ngFor="let data of genders" class="flex items-center gap-1.5">
-            <input class="rounded-full" formControlName="gender" type="radio" [id]="data.code" [value]="data.code">
-            <label class="form-check-label inline-block text-gray-800" [for]="data.code" >{{data?.name}}</label>
-          </div>
-        </div>
-      </div>
-      <div class="mb-4">
-        <label for="country" class="block text-sm font-medium text-gray-700 mb-2">Country</label>
-        <select name="country" formControlName="country" id="country">
-          <option *ngFor="let data of countries" [value]="data.code">{{data?.name}}</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-        <div class="relative w-full">
-          <div class="absolute inset-y-0 right-0 flex items-center px-2">
-            <button type="button" (click)="hide=!hide" mat-icon-button class="absolute inset-y-0 right-0 flex items-center px-2">
-              <mat-icon class="text-slate-600">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-            </button>
-          </div>
-          <input class="pr-16" formControlName="password" id="password" [type]="hide ? 'password': 'text'" autocomplete="new-password"
-          />
-        </div>
-      </div>
+      </mat-form-field>
+
+      <mat-radio-group formControlName="gender">
+        <label for="country" class="block text-sm font-medium text-gray-700 mb-2">Gender</label>
+        <mat-radio-button   class="mr-4" *ngFor="let data of genders" [value]="data.code">{{data.name}}</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field appearance="fill" class="w-full mt-4">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country">
+          <mat-option *ngFor="let data of countries" [value]="data.code">
+            {{data?.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password': 'text'" formControlName="password" autocomplete="new-password">
+        <button matSuffix mat-icon-button type="button" (click)="hide=!hide"><mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon></button>
+      </mat-form-field>
       <div>
         <button type="submit"
                 class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm
@@ -51,9 +45,11 @@
         </button>
       </div>
     </form>
-    <hr class="my-6 border-gray-300 w-full">
   </div>
 
-  <div><small class="font-mono text-xs text-gray-400">Made with <span
-    class="material-icons flex items-center text-red-500">favorite</span> by Bilal.</small></div>
+  <hr class="my-6 border-gray-300 w-full">
+  <p class="text-sm mb-3">Back to
+    <a routerLink="../login" class="font-semibold text-indigo-500 text-sm hover:text-indigo-700">Login?</a></p>
+  <small class="font-mono text-xs text-gray-400">Made with <span
+    class="material-icons flex items-center text-red-500">favorite</span> by Bilal.</small>
 </div>

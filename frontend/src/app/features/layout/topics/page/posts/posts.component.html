@@ -5,26 +5,23 @@
       <div class="border border-gray-300 p-4 rounded-md bg-white">
         <h3 class="font-semibold text-xl text-gray-800">About Community</h3>
         <hr class="my-4">
-        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, cupiditate dicta
-          dignissimos doloremque
-          eaque eveniet ipsa laborum mollitia odit omnis quae quidem quod reiciendis repellat sapiente sint tenetur,
-          veritatis voluptas.</p>
+        <p class="text-gray-700">{{about}}</p>
         <div class="mt-4">
-          <button mat-flat-button class="w-full bg-indigo-700 text-white block">Create Post</button>
+          <button (click)="createPost()" mat-flat-button class="w-full bg-indigo-700 text-white block">Create Post</button>
         </div>
       </div>
     </div>
     <div class="md:col-span-2 md:order-first ">
-      <div class="bg-white border border-gray-300 rounded-md hover:border-gray-400 cursor-pointer mb-4 p-4">
-        <div class="text-xs text-slate-400 mb-4">Posted by <a class="hover:underline" href="">UserName</a></div>
+      <div
+        *ngFor="let data of posts; index as i;"
+        class="bg-white border border-gray-300 rounded-md hover:border-gray-400 cursor-pointer mb-4 p-4">
+        <div class="text-xs text-slate-400 mb-4">Posted by <a class="hover:underline" href="">{{data?.postedBy}}</a></div>
         <div>
-          <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam consequatur eos error
-            facilis id ipsum nostrum praesentium ullam? Eius laborum maiores quam veritatis. Accusamus ea eius ipsa
-            quo.</p>
-          <img src="assets/topic-cover.jpg" alt="">
+          <p *ngIf="data?.description" class="mb-3">{{data?.description}}</p>
+          <img *ngIf="data?.img" [src]="data?.img" alt="">
         </div>
         <div class="mt-2">
-          <button mat-flat-button class="hover:bg-gray-200 text-slate-500">
+          <button (click)="posts[i].liked = !posts[i].liked"  mat-flat-button class="hover:bg-gray-200" [class.text-indigo-500]="data.liked" [class.text-slate-500]="!data.liked">
             <mat-icon>favorite</mat-icon>
             Like
           </button>

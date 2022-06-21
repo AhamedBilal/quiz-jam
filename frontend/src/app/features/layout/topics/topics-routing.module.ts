@@ -11,6 +11,7 @@ import {SettingsComponent} from "./page/settings/settings.component";
 import {GeneralComponent} from "./page/settings/general/general.component";
 import {QuestionsComponent} from "./page/settings/questions/questions.component";
 import {GameComponent} from "./game/game.component";
+import {AdminsComponent} from "./page/settings/admins/admins.component";
 
 const routes: Routes = [
   {path: '', component: TopicsComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
     path: ':topicId/settings', component: SettingsComponent, children: [
       {path: '', redirectTo: 'general', pathMatch: 'full'},
       {path: 'general', component: GeneralComponent},
-      {path: 'members', component: MembersComponent},
+      {path: 'admins', component: AdminsComponent},
       {path: 'questions', component: QuestionsComponent},
     ]
   },

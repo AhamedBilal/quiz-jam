@@ -14,12 +14,7 @@ export class DataService {
 
 
   changeUserData(obj: any) {
-    if (this.userDataObj) {
-      this.userDataObj = {...this.userDataObj, ...obj};
-    } else {
-      this.userDataObj = {...obj};
-    }
-    this.userData.next(this.userDataObj)
+    this.userData.next(obj);
   }
 
 }

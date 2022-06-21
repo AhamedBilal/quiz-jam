@@ -3,15 +3,19 @@
   <div class="border border-gray-300 bg-white grid grid-cols-4 gap-4">
     <div class="border-r border-gray-300">
       <mat-nav-list>
-        <mat-list-item routerLink="list" routerLinkActive="active">
-          <mat-icon mat-list-icon>group</mat-icon>
-          <h4 mat-line>Friends</h4>
-        </mat-list-item>
-        <mat-list-item routerLink="search" routerLinkActive="active">
+        <mat-list-item routerLink="search" routerLinkActive="bg-gray-100">
           <mat-icon mat-list-icon>person_search</mat-icon>
           <h4 mat-line>Search</h4>
         </mat-list-item>
-        <mat-list-item routerLink="blocked-list" routerLinkActive="active">
+        <mat-list-item routerLink="requests" routerLinkActive="bg-gray-100">
+          <mat-icon mat-list-icon>handshake</mat-icon>
+          <h4 mat-line>Requests</h4>
+        </mat-list-item>
+        <mat-list-item routerLink="list" routerLinkActive="bg-gray-100">
+          <mat-icon mat-list-icon>group</mat-icon>
+          <h4 mat-line>Friends</h4>
+        </mat-list-item>
+        <mat-list-item routerLink="blocked-list" routerLinkActive="bg-gray-100">
           <mat-icon mat-list-icon>block</mat-icon>
           <h4 mat-line>Blocked List</h4>
         </mat-list-item>

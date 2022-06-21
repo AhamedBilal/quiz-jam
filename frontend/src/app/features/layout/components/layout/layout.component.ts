@@ -26,10 +26,10 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getUserDetails().subscribe(value => {
-      this.userObj = value;
-      this.dataService.changeUserData(value);
-    })
+    // this.authService.getUserDetails().subscribe(value => {
+    //   this.userObj = value;
+    //   this.dataService.changeUserData(value);
+    // })
 
   }
 

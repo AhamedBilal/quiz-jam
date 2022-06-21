@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
+import {waitFor} from "../../../../../../config/shared";
 
 @Component({
   selector: 'app-general',
@@ -30,13 +31,16 @@ export class GeneralComponent implements OnInit {
     return this.formGroup.get('img');
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.spinner.show();
+    await waitFor(1500);
+    this.spinner.hide();
     this.formGroup.patchValue({
       name: 'Basic Maths',
       about: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, cupiditate dicta dignissimos doloremque eaque eveniet ipsa laborum mollitia odit omnis quae quidem quod reiciendis repellat sapiente sint tenetur, veritatis voluptas.',
       category: 'Mathematics',
       img: 'bg-img000001.jpg'
-    })
+    });
   }
 
   onFileSelected(event: any) {

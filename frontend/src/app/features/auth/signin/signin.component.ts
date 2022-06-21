@@ -4,6 +4,7 @@ import {ToastrService} from "ngx-toastr";
 import {NgxSpinnerService} from "ngx-spinner";
 import {AuthService} from "../../../core/services/auth.service";
 import {Router} from "@angular/router";
+import {waitFor} from "../../../config/shared";
 
 @Component({
   selector: 'app-signin',
@@ -12,6 +13,7 @@ import {Router} from "@angular/router";
 })
 export class SigninComponent implements OnInit {
   formGroup: FormGroup;
+  hide = true;
 
   constructor(
     private fb: FormBuilder,
@@ -29,20 +31,23 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
       return;
     }
 
     this.spinner.show();
-    this.service.login(this.formGroup.value).subscribe(value => {
-      this.spinner.hide();
-      console.log(value);
-      localStorage.setItem('token', value.token);
-      this.router.navigate(['']);
-      this.toastr.success('LOGIN SUCCESSFUL');
-    });
+    await waitFor(2000);
+    this.spinner.hide();
+    localStorage.setItem('token', 'sdsfsdfdsfsdfs');
+    this.router.navigate(['']);
+    this.toastr.success('LOGIN SUCCESSFUL');
+    // this.service.login(this.formGroup.value).subscribe(value => {
+    //   this.spinner.hide();
+    //   console.log(value);
+    //
+    // });
 
 
   }
