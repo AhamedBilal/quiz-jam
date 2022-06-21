@@ -1,0 +1,30 @@
+<div class="p-4">
+  <div>
+    <div
+      *ngFor="let data of friends; index as i;"
+      class="flex justify-between items-center bg-white border border-gray-300 rounded py-4 px-6">
+      <div class="flex gap-4 items-center">
+        <span class="flex ml-3 text-sm bg-gray-800 rounded-full md:mr-0">
+        <img class="w-8 h-8 rounded-full" [src]="data?.img">
+      </span>
+        <p class=" text-sm text-gray-800">{{data?.name}}</p>
+      </div>
+      <div>
+        <button type="button" mat-icon-button matTooltip="Confirm" (click)="remove(i)">
+          <mat-icon>done</mat-icon>
+        </button>
+        <button type="button" mat-icon-button matTooltip="Cancel" (click)="remove(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <mat-paginator [length]="friends.length"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 aria-label="Select page">
+  </mat-paginator>
+
+
+</div>
